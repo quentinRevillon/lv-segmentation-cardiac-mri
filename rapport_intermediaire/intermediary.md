@@ -34,13 +34,18 @@ Pour l'instant, voici le détail des tâches que nous avons réalisées:
 - **Segmentation par croissance de région**:
     - Nous avons commencé par des algorithme de croissance de région basique:
         - **Croissance de région par bord**: on réalise une détéction de bord (ici par un filtre de Canny) et on ajoute les voisins qui ne touchent pas le bord (et qui touchent le bord).
-        - **Croissance de région par seuil**: on choisit un seuil de départ et on ajoute les voisins qui ont une intensité proche du seuil.
+        - **Croissance de région par tolérance**: on choisit un seuil de départ et on ajoute les voisins qui ont une intensité comprise dans une certaine tolérance par rapport à celle du pixel de départ.
         - **Croissance de région par moyenne**: on choisit un seuil de départ et on ajoute les voisins qui ont une intensité proche de la moyenne de la région.
-    
-        Malheureusement, ces algorithmes ne donnent pas de résultats satisfaisants. Nous nous penchons alors sur des algorithmes plus complexes.
 
+        ***Exemple de croissance de région par tolérance (Patient 001 - Slice 1 à 5 - Time 1)***:
+        
+        ![alt text](image-1.png)
+        **+**
+        ![alt text](image-2.png)
+        **=**
+        ![alt text](segmentation_result.png)
 
 ## Prochaines étapes:
 
-- Notre priorité actuelle est de **trouver un algorithme de *region growing* qui fonctionne correctement**. Pour cela, nous allons essayer des approches plus avancées.
+- Notre priorité actuelle est de **trouver un meilleur algorithme de *region growing***. Pour cela, nous allons essayer des approches plus avancées et différentes itérations des approches actuelles.
 - Une fois cette étape réalisée, nous pourrons nous concentrer sur l'optimisation des différentes étapes et sur l'amélioration de la robustesse et des performances de notre méthode.
