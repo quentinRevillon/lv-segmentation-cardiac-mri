@@ -17,7 +17,7 @@ ACDC, LV cavity. Parameters were set by hand, mainly on ED images.
 | ES | training | 100 | 0.769 | 0.805 |
 | ES | test | 50 | 0.709 | 0.738 |
 
-For reference, the best ACDC challenge entry (deep learning) reaches 0.967 (ED) and 0.928 (ES) [1]. Errors concentrate at the apex and the base. Per-slice results are in [`notebooks/01_report.ipynb`](notebooks/01_report.ipynb) (in French).
+For reference, the best ACDC challenge entry (deep learning) reaches 0.967 (ED) and 0.928 (ES) [1]. Errors concentrate at the apex and the base. Per-slice results are in [`notebooks/01_report.ipynb`](notebooks/01_report.ipynb) (in French). The intermediate report is in [`docs/intermediate_report_fr.pdf`](docs/intermediate_report_fr.pdf) (in French).
 
 ## Quick start
 
@@ -42,6 +42,7 @@ python evaluate.py data/testing --phase ED --output results_testing_ED.csv
 ```
 lv_segmentation/   seed detection, region growing, pipeline, metrics
 notebooks/         report with data analysis and all evaluations
+docs/              intermediate report (PDF, French)
 figures/           README images
 segment.py         segment one case
 evaluate.py        evaluate a whole split
@@ -49,8 +50,8 @@ evaluate.py        evaluate a whole split
 
 ## References
 
-1. O. Bernard et al. "Deep Learning Techniques for Automatic MRI Cardiac Multi-structures Segmentation and Diagnosis: Is the Problem Solved?" *IEEE TMI*, 2018. [doi:10.1109/TMI.2018.2837502](https://doi.org/10.1109/TMI.2018.2837502)
-2. H.-Y. Lee et al. "Automatic Left Ventricle Segmentation Using Iterative Thresholding and an Active Contour Model With Adaptation on Short-Axis Cardiac MRI." *IEEE TBME*, 2010. [doi:10.1109/TBME.2009.2014545](https://doi.org/10.1109/TBME.2009.2014545)
+1. O. Bernard et al. [Deep Learning Techniques for Automatic MRI Cardiac Multi-Structures Segmentation and Diagnosis: Is the Problem Solved?](https://doi.org/10.1109/TMI.2018.2837502). IEEE TMI, 2018.
+2. H.-Y. Lee et al. [Automatic Left Ventricle Segmentation Using Iterative Thresholding and an Active Contour Model With Adaptation on Short-Axis Cardiac MRI](https://doi.org/10.1109/TBME.2009.2014545). IEEE TBME, 2010.
 
 ## Team
 
