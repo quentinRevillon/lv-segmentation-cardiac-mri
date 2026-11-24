@@ -36,6 +36,10 @@ concentrate at the apex (0.55) and the base (0.78), where the cavity is small or
 smaller and the parameters were tuned on ED. `evaluate.py` reproduces the two test rows exactly. Per-slice tables and Dice histograms are in
 [`notebooks/01_report.ipynb`](notebooks/01_report.ipynb) (in French).
 
+<img height="250" src="figures/dice_histogram_testing_ed.png" />
+
+*Distribution of the 2D Dice over all slices of the ED test set.*
+
 ## Installation
 
 ```bash
