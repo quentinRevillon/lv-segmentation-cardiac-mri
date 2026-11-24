@@ -12,16 +12,15 @@ end-diastole on the 50 ACDC test cases.
 ## Overview
 
 - Problem: delineate the LV cavity in every slice of an end-diastole (ED) or end-systole (ES) cine MRI frame.
-- Approach: no learning, unlike the CNNs that lead the ACDC benchmark [1, 2]. A seed is found by circle detection on the ED/ES difference image, a region is grown from it
-  until it leaks through the endocardium, and the segmentation is propagated from the mid slice to the base and apex.
-  The pipeline follows the endocardial step of ITHACA [3].
+- Approach: no learning, unlike the CNNs that lead the ACDC benchmark [1, 2]. A seed is found by circle detection on
+  the ED/ES difference image, a region is grown from it until it leaks through the endocardium, and the segmentation
+  is propagated from the mid slice to the base and apex. The iterative region growing is inspired by ITHACA [3].
 - Context: image-processing course project (IMA201, Télécom Paris, Oct.–Nov. 2024), team of two.
 
 ## Results
 
-ACDC, LV cavity (label 3). Parameters were tuned by hand on the 100 training cases; the 50 test cases were used for
-evaluation only. *2D Dice* is averaged over slices, *3D Dice* over volumes; *Seed in LV* is the share of slices whose
-seed falls inside the reference cavity.
+ACDC, LV cavity (label 3). Parameters were set by hand, mainly on ED images. *2D Dice* is averaged over slices,
+*3D Dice* over volumes; *Seed in LV* is the share of slices whose seed falls inside the reference cavity.
 
 | Phase | Split | Cases | Seed in LV | 2D Dice | 3D Dice |
 |---|---|---|---|---|---|
@@ -29,12 +28,12 @@ seed falls inside the reference cavity.
 | ED | test | 50 | 93.3 % | 0.887 | **0.923** |
 | ES | training | 100 | 86.5 % | 0.769 | 0.805 |
 | ES | test | 50 | 80.1 % | 0.709 | 0.738 |
-| *Best ACDC 2017 entries, deep learning [1]* | *test* | *50* | - | - | *0.967 (ED), 0.928 (ES)* |
+| *Best ACDC challenge entry, deep learning [1]* | *test* | *50* | - | - | *0.967 (ED), 0.928 (ES)* |
 
 On the ED test set, mid-ventricular slices (positions 2 to 6 out of 10) reach a mean 2D Dice of 0.96; errors
 concentrate at the apex (0.55) and the base (0.78), where the cavity is small or open. ES is harder: the cavity is
-smaller and the parameters were tuned on ED. `evaluate.py` reproduces the two test rows exactly. Per-slice tables and Dice histograms are in
-[`notebooks/01_report.ipynb`](notebooks/01_report.ipynb) (in French).
+smaller and the parameters were tuned on ED. `evaluate.py` reproduces the two test rows exactly. Per-slice tables and
+Dice histograms are in [`notebooks/01_report.ipynb`](notebooks/01_report.ipynb) (in French).
 
 <img height="250" src="figures/dice_histogram_testing_ed.png" />
 
@@ -62,7 +61,7 @@ python segment.py data/testing/patient101 --phase ED --output patient101_ED_lv.n
 | `patient101_ED_lv.nii.gz` | LV cavity mask (uint8, 1 = LV), same geometry as `patient101_frame01.nii.gz` |
 | `patient101_ED.png` | mid slice with predicted (red) and reference (blue) contours (optional) |
 
-Evaluate on a whole split (a few seconds per case on a CPU):
+Evaluate on a whole split (about 6 s per case on a CPU):
 
 ```bash
 python evaluate.py data/testing --phase ED --output results_testing_ED.csv
