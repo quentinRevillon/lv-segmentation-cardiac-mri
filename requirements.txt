@@ -1,0 +1,6 @@
+matplotlib>=3.8
+nibabel>=5.2
+numpy>=1.26
+opencv-python>=4.8
+pandas>=2.0
+scikit-image>=0.24
