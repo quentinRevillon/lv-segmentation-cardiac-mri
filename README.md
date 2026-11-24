@@ -33,7 +33,7 @@ seed falls inside the reference cavity.
 
 On the ED test set, mid-ventricular slices (positions 2 to 6 out of 10) reach a mean 2D Dice of 0.96; errors
 concentrate at the apex (0.55) and the base (0.78), where the cavity is small or open. ES is harder: the cavity is
-smaller and the parameters were tuned on ED. Per-slice tables and Dice histograms are in
+smaller and the parameters were tuned on ED. `evaluate.py` reproduces the two test rows exactly. Per-slice tables and Dice histograms are in
 [`notebooks/01_report.ipynb`](notebooks/01_report.ipynb) (in French).
 
 ## Installation
